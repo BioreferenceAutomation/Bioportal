@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [brli]">
+  <test thread-count="5" name="AddUserFCA(failed)">
+    <classes>
+      <class name="brli.AddUserFCA">
+        <methods>
+          <include name="teardown"/>
+          <include name="setUp"/>
+          <include name="adduserfca"/>
+        </methods>
+      </class> <!-- brli.AddUserFCA -->
+    </classes>
+  </test> <!-- AddUserFCA(failed) -->
+</suite> <!-- Failed suite [brli] -->

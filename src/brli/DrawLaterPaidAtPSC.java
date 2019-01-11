@@ -1,0 +1,142 @@
+package brli;
+
+import static org.testng.Assert.fail;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class DrawLaterPaidAtPSC extends Data{
+
+	private WebDriver driver;
+	private String baseUrl;
+	private StringBuffer verificationErrors = new StringBuffer();
+
+	@BeforeClass(alwaysRun = true)
+	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\mpatel113326\\BioPortal\\Driver\\geckodriver.exe");
+		System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
+		driver = new FirefoxDriver();
+		baseUrl = url;
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void addpatientdlpsc() throws Exception {
+		driver.get(baseUrl);
+		driver.switchTo().frame(0);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUsername")));
+		driver.findElement(By.id("txtUsername")).sendKeys(username);
+		WebDriverWait wait2 = new WebDriverWait(driver, 10);
+		wait2.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtPassword")));
+		driver.findElement(By.id("txtPassword")).sendKeys(password);
+		WebDriverWait wait3 = new WebDriverWait(driver, 10);
+		wait3.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtLocation")));
+		driver.findElement(By.id("txtLocation")).sendKeys("J3333");
+		WebDriverWait wait4 = new WebDriverWait(driver, 10);
+		wait4.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnLogin")));
+		driver.findElement(By.id("btnLogin")).click();
+		Thread.sleep(2000);
+		driver.switchTo().frame(0);
+		WebDriverWait wait5 = new WebDriverWait(driver, 10);
+		wait5.until(ExpectedConditions.visibilityOfElementLocated(By.name("searchvalue")));
+		driver.findElement(By.name("searchvalue")).sendKeys("Day");
+		WebDriverWait wait6 = new WebDriverWait(driver, 10);
+		wait6.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnQuickSearchGo")));
+		driver.findElement(By.id("btnQuickSearchGo")).click();
+		WebDriverWait wait7 = new WebDriverWait(driver, 10);
+		wait7.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Day, Azure")));
+		driver.findElement(By.linkText("Day, Azure")).click();
+		WebDriverWait wait8 = new WebDriverWait(driver, 10);
+		wait8.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Create New Order')]")));
+		driver.findElement(By.xpath("//span[contains(text(), 'Create New Order')]")).click();
+		WebDriverWait wait9 = new WebDriverWait(driver, 10);
+		wait9.until(ExpectedConditions.visibilityOfElementLocated(By.name("BillType")));
+		Thread.sleep(1000);
+		Select dropdown = new Select(driver.findElement(By.id("OrderTypeText")));
+		dropdown.selectByValue("DrawLater");
+		Thread.sleep(1000);
+		Select dropdown2 = new Select(driver.findElement(By.name("BillType")));
+		dropdown2.selectByValue("032");
+		WebDriverWait wait10 = new WebDriverWait(driver, 20);
+		wait10.until(ExpectedConditions.visibilityOfElementLocated(By.id("OrderingProviderId")));
+		Select dropdown3 = new Select(driver.findElement(By.id("OrderingProviderId")));
+		dropdown3.selectByValue("409492");
+		Thread.sleep(1000);
+		WebDriverWait wait13 = new WebDriverWait(driver, 10);
+		wait13.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnNext")));
+		driver.findElement(By.id("btnNext")).click();
+		WebDriverWait wait14 = new WebDriverWait(driver, 10);
+		wait14.until(ExpectedConditions.visibilityOfElementLocated(By.id("QuickTestTextbox")));
+		Thread.sleep(2000);
+		driver.findElement(By.id("QuickTestTextbox")).clear();
+		driver.findElement(By.id("QuickTestTextbox")).sendKeys("0050-5");
+		Thread.sleep(10000);
+		driver.findElement(By.id("QuickTestTextbox")).sendKeys(Keys.DOWN, Keys.RETURN);
+		Thread.sleep(2000);
+		WebDriverWait wait16 = new WebDriverWait(driver, 10);
+		wait16.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Next >')]")));
+		driver.findElement(By.xpath("//span[contains(text(), 'Next >')]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.name("SubmitComplete")).click();
+		Thread.sleep(2000);
+		driver.switchTo().frame("RequisitionFrame");
+		Thread.sleep(2000);
+		WebDriverWait wait19 = new WebDriverWait(driver, 20);
+		wait19.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[style='left: 588.147px; top: 103.976px; font-size: 8.7504px; font-family: sans-serif; transform: scaleX(1.24256);']")));
+		String orderNo = driver.findElement(By.cssSelector("div[style='left: 588.147px; top: 103.976px; font-size: 8.7504px; font-family: sans-serif; transform: scaleX(1.24256);']")).getText();
+		System.out.println(orderNo);
+		
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		Date date = new Date();
+		String date1= dateFormat.format(date);
+		FileInputStream fis = new FileInputStream("C:\\Users\\mpatel113326\\BioPortal\\Orders.xls");
+		HSSFWorkbook workbook = new HSSFWorkbook(fis);
+		HSSFSheet sheet = workbook.getSheet("Sheet1");
+		int rowCount = sheet.getLastRowNum()-sheet.getFirstRowNum();
+		Row row = sheet.getRow(0);
+		Row newRow = sheet.createRow(rowCount+1);
+		for (int i = 0; i< row.getLastCellNum(); i++) {
+			 Cell cell = newRow.createCell(i);
+			 cell.setCellValue("DrawLaterPaidAtPSC"+": " + orderNo + ": "+date1);
+		}
+		fis.close();
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\mpatel113326\\BioPortal\\Orders.xls");
+		workbook.write(fos);
+		fos.close();
+		}
+		
+	
+	@AfterClass(alwaysRun = true)
+	public void teardown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
+		
+	}
+}

@@ -1,0 +1,74 @@
+<suite name="brli">
+ <test name="AddUserFCA">
+ <classes>
+ <class name="brli.AddUserFCA" />
+ </classes>
+ </test>
+ 
+ <test name="AddUserLOO">
+ <classes>
+ <class name="brli.AddUserLOO" />
+ </classes>
+ </test>
+ 
+ <test name="AddUserPA">
+ <classes>
+ <class name="brli.AddUserPA" />
+ </classes>
+ </test>
+ 
+ <test name="AddUserPIO">
+ <classes>
+ <class name="brli.AddUserPIO" />
+ </classes>
+ </test>
+ 
+ <test name="AddUserRO">
+ <classes>
+ <class name="brli.AddUserRO" />
+ </classes>
+ </test>
+ 
+ <test name="DrawLaterPaidAtPSC">
+ <classes>
+ <class name="brli.DrawLaterPaidAtPSC" />
+ </classes>
+ </test>
+ 
+ <test name="DrawLaterPatient">
+ <classes>
+ <class name="brli.DrawLaterPatient" />
+ </classes>
+ </test>
+ 
+ <test name="DrawLaterThirdParty">
+ <classes>
+ <class name="brli.DrawLaterThirdParty" />
+ </classes>
+ </test>
+ 
+ <test name="DrawNowPaidAtPSC">
+ <classes>
+ <class name="brli.DrawNowPaidAtPSC" />
+ </classes>
+ </test>
+ 
+ <test name="DrawNowPatient">
+ <classes>
+ <class name="brli.DrawNowPatient" />
+ </classes>
+ </test>
+ 
+  <test name="DrawNowThirdParty">
+ <classes>
+ <class name="brli.DrawNowThirdParty" />
+ </classes>
+ </test>
+ 
+  <test name="DrawNowThirdPartyMedicare">
+ <classes>
+ <class name="brli.DrawNowThirdPartyMedicare" />
+ </classes>
+ </test>
+ 
+</suite>

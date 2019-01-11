@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="brli.DrawLaterPatient">
+        <methods>
+          <include name="setUp"/>
+          <include name="teardown"/>
+          <include name="addpatientdlpatient"/>
+        </methods>
+      </class> <!-- brli.DrawLaterPatient -->
+      <class name="brli.DrawNowThirdPartyMedicare">
+        <methods>
+          <include name="addpatientdntpmedicare"/>
+          <include name="teardown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- brli.DrawNowThirdPartyMedicare -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
